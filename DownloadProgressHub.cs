@@ -10,12 +10,12 @@ namespace Blablabla.Hubs
         {
             string id = Context.ConnectionId;
             int progress = 0;
-            while (!progress.Equals(100))
+            do
             {
                 progress = Blabla.ExportUtility.GetExportingProgress(name);
                 Clients.Client(id).updateProgress(progress);
                 System.Threading.Thread.Sleep(200);
-            }
+            } while (!progress.Equals(100));
         }
  
     }
